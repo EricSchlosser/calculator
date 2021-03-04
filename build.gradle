@@ -2,7 +2,10 @@ plugins {
 	id 'org.springframework.boot' version '2.4.3'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	
 }
+
+apply plugin: "jacoco"
 
 group = 'com.EricSchlosser'
 version = '0.0.1-SNAPSHOT'
@@ -12,9 +15,22 @@ repositories {
 	mavenCentral()
 }
 
+jacocoTestCoverageVerification {
+violationRules {
+rule {
+limit {
+minimum = 0.2
+}
+
+}
+}
+}
+
+
+
 dependencies {
- testCompile 'junit:junit:4.11'
-    compile 'junit:junit:4.11'
+ testImplementation 'junit:junit:4.11'
+    implementation 'junit:junit:4.11'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
